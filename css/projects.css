@@ -1,0 +1,1084 @@
+/* Projects Section - Futuristic Blue Glasmorphism */
+:root {
+    --primary-blue: #0ea5e9;
+    --secondary-blue: #38bdf8;
+    --glass-bg: rgba(14, 165, 233, 0.15);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+}
+
+.projects-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(135deg, #0a0a2a 0%, #0a192f 100%);
+    color: var(--text-primary);
+}
+
+.projects-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background:
+        linear-gradient(90deg, #0ea5e9 0%, #38bdf8 50%, #0ea5e9 100%),
+        radial-gradient(circle at 50% 50%, #7dd3fc88 0%, transparent 80%);
+    box-shadow: 0 0 16px 4px #38bdf888, 0 0 32px 8px #0ea5e944;
+    opacity: 0.95;
+    z-index: 11;
+    animation: project-top-glow 3s linear infinite;
+    border-radius: 0 0 8px 8px;
+    pointer-events: none;
+}
+
+@keyframes project-top-glow {
+    0% {
+        filter: brightness(1.2) blur(0.5px);
+        background-position: 0% 0%;
+    }
+
+    50% {
+        filter: brightness(1.5) blur(1.5px);
+        background-position: 100% 0%;
+    }
+
+    100% {
+        filter: brightness(1.2) blur(0.5px);
+        background-position: 0% 0%;
+    }
+}
+
+.section-title {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+}
+
+.section-title .highlight {
+    background: linear-gradient(90deg, #7dd3fc, #38bdf8);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.title-decorator {
+    display: block;
+    width: 80px;
+    height: 6px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    margin-bottom: 1.5rem;
+    border-radius: 3px;
+    box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* Filter Controls - Futuristic Glass Buttons */
+.filter-controls {
+    display: flex;
+    gap: 1rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-primary);
+    font-weight: 500;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+}
+
+.filter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: 0.5s;
+}
+
+.filter-btn:hover::before {
+    left: 100%;
+}
+
+.filter-btn i {
+    font-size: 1.1rem;
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    box-shadow: 0 0 20px rgba(14, 165, 233, 0.5);
+}
+
+.filter-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.3);
+}
+
+/* Projects Grid - Glassmorphism Cards */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+}
+
+.project-card {
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: var(--glass-shadow);
+}
+
+.project-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(14, 165, 233, 0.3);
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(14, 165, 233, 0.1) 0%, transparent 100%);
+    z-index: -1;
+}
+
+.project-media {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.project-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    transition: opacity 0.5s ease, transform 0.8s ease;
+}
+
+.project-media img.loaded {
+    opacity: 1;
+}
+
+.project-card:hover .project-media img {
+    transform: scale(1.1);
+}
+
+.project-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, #ef4444 60%, #f97316 100%);
+    color: white;
+    padding: 0.55rem 1.25rem 0.55rem 1rem;
+    border-radius: 50px 50px 50px 18px;
+    font-size: 0.92rem;
+    font-weight: bold;
+    z-index: 2;
+    box-shadow: 0 4px 18px 0 rgba(239, 68, 68, 0.35), 0 0 0 4px rgba(255, 255, 255, 0.08) inset;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.02em;
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    animation: badge-pop 0.7s cubic-bezier(.6, 1.5, .4, 1) 1;
+    transition: box-shadow 0.3s, transform 0.3s;
+    filter: drop-shadow(0 0 8px #f97316cc);
+}
+
+.project-badge i {
+    font-size: 1.1em;
+    margin-right: 0.2em;
+    filter: drop-shadow(0 0 2px #fff8);
+    animation: badge-icon-bounce 1.2s infinite alternate;
+}
+
+.project-card:hover .project-badge {
+    box-shadow: 0 8px 32px 0 #f97316cc, 0 0 0 6px rgba(255, 255, 255, 0.13) inset;
+    transform: scale(1.08) rotate(-2deg);
+}
+
+@keyframes badge-pop {
+    0% {
+        transform: scale(0.7) rotate(-10deg);
+        opacity: 0;
+    }
+
+    60% {
+        transform: scale(1.15) rotate(3deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(0);
+    }
+}
+
+@keyframes badge-icon-bounce {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(-3px);
+    }
+}
+
+/* Animated Section Separator - Futuristic Wave */
+.section-separator {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: -4rem;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.section-separator svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.wave-path {
+    animation: waveMove 8s linear infinite alternate;
+}
+
+@keyframes waveMove {
+    0% {
+        d: path("M0,80 Q350,120 700,80 T1400,80 V120 H0 Z");
+    }
+
+    50% {
+        d: path("M0,80 Q350,40 700,120 T1400,80 V120 H0 Z");
+    }
+
+    100% {
+        d: path("M0,80 Q350,120 700,80 T1400,80 V120 H0 Z");
+    }
+}
+
+/* ...existing code... */
+.project-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-info {
+    padding: 2rem;
+    position: relative;
+}
+
+.project-info h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.project-info p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.project-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.project-meta i {
+    margin-right: 0.5rem;
+}
+
+.project-stat {
+    margin-left: 1.5rem;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tag {
+    background: rgba(56, 189, 248, 0.15);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #7dd3fc;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    transition: all 0.3s ease;
+}
+
+.project-tag:hover {
+    background: rgba(56, 189, 248, 0.3);
+    transform: translateY(-2px);
+}
+
+.project-tag i {
+    font-size: 0.9rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 500;
+}
+
+.project-btn.demo {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+}
+
+.project-btn.code {
+    background: rgba(30, 41, 59, 0.5);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.project-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.4);
+}
+
+.project-btn i {
+    font-size: 1rem;
+}
+
+/* Load More Button - Animated */
+.view-more {
+    display: flex;
+    justify-content: center;
+    margin-top: 4rem;
+}
+
+.glow-btn {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    font-weight: 600;
+    font-size: 1.1rem;
+    box-shadow: 0 5px 25px rgba(14, 165, 233, 0.4);
+}
+
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.glow-btn:hover::before {
+    left: 100%;
+}
+
+.glow-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(14, 165, 233, 0.6);
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.progress-circle {
+    position: relative;
+    margin-right: 0.5rem;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.2);
+    stroke-width: 2;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: white;
+    stroke-width: 2;
+    stroke-dasharray: 113;
+    stroke-dashoffset: 113;
+    transition: stroke-dashoffset 0.5s ease;
+}
+
+.glow-btn i {
+    transition: transform 0.3s ease;
+}
+
+.glow-btn:hover i {
+    transform: translateY(3px);
+}
+
+.glow-btn.less {
+    background: linear-gradient(135deg, #f43f5e, #f59e42);
+    box-shadow: 0 5px 25px rgba(244, 63, 94, 0.3);
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.glow-btn.less::before {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+}
+
+.glow-btn.less:hover {
+    box-shadow: 0 15px 35px rgba(244, 63, 94, 0.5);
+    transform: translateY(-5px) scale(1.04) rotate(-2deg);
+}
+
+.glow-btn.less .btn-icon i {
+    transition: transform 0.3s cubic-bezier(.6, .4, .4, 1);
+}
+
+.glow-btn.less:hover .btn-icon i {
+    transform: translateY(-3px) scale(1.2) rotate(-180deg);
+}
+
+.less-progress {
+    stroke: #fff;
+    stroke-dasharray: 113;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 0.5s cubic-bezier(.6, .4, .4, 1);
+}
+
+/* Modal - Futuristic Glass Design */
+.project-modal {
+    position: fixed;
+    inset: 0;
+    /* Gantikan top/left/right/bottom */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.project-modal.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    margin: 0;
+    /* Hapus margin:auto jika ada */
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+}
+
+.project-modal.active .modal-content {
+    transform: scale(1);
+}
+
+.close-modal {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-primary);
+    z-index: 10;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.close-modal:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg);
+}
+
+.close-modal i {
+    font-size: 1.25rem;
+}
+
+.modal-body {
+    padding: 3rem;
+}
+
+.modal-header {
+    margin-bottom: 2.5rem;
+}
+
+.modal-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    background: linear-gradient(90deg, var(--primary-blue), var(--secondary-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.modal-meta {
+    display: flex;
+    gap: 2rem;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.modal-meta span {
+    display: flex;
+    align-items: center;
+}
+
+.modal-meta i {
+    margin-right: 0.5rem;
+}
+
+.modal-content-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+}
+
+.modal-image {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.5s ease;
+}
+
+.modal-image:hover {
+    transform: scale(1.02);
+}
+
+.modal-details {
+    margin-top: 2rem;
+}
+
+.modal-description {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.modal-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.modal-tag {
+    background: rgba(56, 189, 248, 0.15);
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #7dd3fc;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+}
+
+.modal-tag i {
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.modal-btn {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.modal-btn.demo {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    color: white;
+    box-shadow: 0 5px 20px rgba(14, 165, 233, 0.4);
+}
+
+.modal-btn.code {
+    background: rgba(30, 41, 59, 0.5);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.modal-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(14, 165, 233, 0.5);
+}
+
+.modal-btn i {
+    font-size: 1.1rem;
+}
+
+/* Confetti Animation */
+.confetti-container {
+    pointer-events: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 18px;
+    border-radius: 3px;
+    opacity: 0.8;
+    animation: confetti-fall 1.5s cubic-bezier(.6, .4, .4, 1) forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-40px) rotateZ(0deg);
+    }
+
+    100% {
+        transform: translateY(400px) rotateZ(360deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
+    .modal-body {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects-container {
+        padding: 4rem 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .filter-controls {
+        justify-content: center;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-header h2 {
+        font-size: 2rem;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-btn {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .filter-controls {
+        gap: 0.75rem;
+    }
+
+    .filter-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .modal-body {
+        padding: 1.5rem;
+    }
+
+    .modal-header h2 {
+        font-size: 1.75rem;
+    }
+
+    .modal-meta {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Animation Effects */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.project-card {
+    animation: fadeIn 0.6s ease forwards;
+    opacity: 0;
+}
+
+.project-card:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.project-card:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+.project-card:nth-child(5) {
+    animation-delay: 0.5s;
+}
+
+.project-card:nth-child(6) {
+    animation-delay: 0.6s;
+}
+
+/* Hover Effects for Interactive Elements */
+.filter-btn,
+.project-card,
+.project-btn,
+.modal-btn,
+.glow-btn {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary-blue), var(--secondary-blue));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+}
+
+/* Card Shine Effect */
+.project-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-shine {
+    position: absolute;
+    top: -75%;
+    left: -75%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.05) 60%, transparent 100%);
+    transform: rotate(25deg);
+    pointer-events: none;
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+
+.project-card:hover .project-shine {
+    opacity: 1;
+    animation: shine-move 1.2s linear;
+}
+
+@keyframes shine-move {
+    0% {
+        left: -75%;
+        top: -75%;
+    }
+
+    100% {
+        left: 100%;
+        top: 100%;
+    }
+}
+
+/* Ripple Effect */
+.project-card:active::before {
+    content: '';
+    position: absolute;
+    left: var(--ripple-x, 50%);
+    top: var(--ripple-y, 50%);
+    width: 0;
+    height: 0;
+    background: rgba(56, 189, 248, 0.25);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: ripple 0.5s linear;
+    z-index: 2;
+}
+
+@keyframes ripple {
+    to {
+        width: 300px;
+        height: 300px;
+        opacity: 0;
+    }
+}
+
+/* Filter Button Animated Underline */
+.filter-btn {
+    position: relative;
+    /* ...existing code... */
+}
+
+.filter-btn.active::after {
+    content: '';
+    position: absolute;
+    left: 20%;
+    bottom: 8px;
+    width: 60%;
+    height: 3px;
+    background: linear-gradient(90deg, #7dd3fc, #38bdf8);
+    border-radius: 2px;
+    opacity: 1;
+    transition: width 0.3s;
+}
+
+.filter-btn:not(.active)::after {
+    opacity: 0;
+    width: 0;
+}
+
+/* Floating Filter on Scroll */
+.filter-section {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(8px);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+    border-radius: 0 0 18px 18px;
+    box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+}
+
+.modal-image-carousel {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-controls button {
+    background: rgba(56, 189, 248, 0.15);
+    border: none;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    color: #7dd3fc;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.carousel-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.carousel-indicator {
+    color: #7dd3fc;
+    font-weight: 600;
+}
+
+/* Modal Navigation Buttons - Enhanced Style */
+.modal-nav {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2.5rem 0 1rem 0;
+}
+
+.modal-nav-btn {
+    background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+    border: none;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.6rem;
+    box-shadow: 0 4px 18px rgba(14, 165, 233, 0.25);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.modal-nav-btn.prev:hover i {
+    transform: translateX(-4px) scale(1.15);
+}
+
+.modal-nav-btn.next:hover i {
+    transform: translateX(4px) scale(1.15);
+}
+
+/* Disabled state */
+.modal-nav-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: linear-gradient(135deg, #334155, #64748b);
+}

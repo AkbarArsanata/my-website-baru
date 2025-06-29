@@ -1,0 +1,32 @@
+<div class="contact-section">
+    <div id="tsparticles"></div>
+    <div class="grid-overlay"></div>
+
+    <div class="contact-container">
+        <h2 id="contactTitle">Connect With Me</h2>
+
+        <form id="contactForm" action="https://formspree.io/f/xdkzyznz" method="POST">
+            <div class="input-group">
+                <label for="email">Email Anda:</label>
+                <input type="email" id="email" name="email" required placeholder="email@contoh.com">
+                <div class="error-message" id="emailError"></div>
+            </div>
+            <div class="input-group">
+                <label for="message">Pesan Anda:</label>
+                <textarea id="message" name="message" rows="5" required
+                    placeholder="Tulis pesan Anda di sini..."></textarea>
+                <div class="error-message" id="messageError"></div>
+            </div>
+
+            <button type="submit" class="btn">Kirim Pesan</button>
+        </form>
+
+        <div id="successMessageContainer" class="success-message-container">
+            <div class="success-icon">✔</div>
+            <div class="transfer-indicator"></div>
+            <h3>Data Anda Terverifikasi!</h3>
+            <p>Terima kasih telah menghubungi kami. Tim kami akan segera merespons melalui saluran yang sesuai.</p>
+            <button type="button" class="reset-btn" onclick="window.resetContactForm()">Kirim Pesan Baru</button>
+        </div>
+    </div>
+</div>

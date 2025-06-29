@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/certificates.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header id="header"></header>
+    <section id="hero"></section>
+    <section id="about"></section>
+    <section id="experience-section"></section>
+    <section id="projects"></section>
+    <section id="certificates"></section>
+    <section id="contact"></section>
+    <footer id="footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+
+    <script>
+        // Load all components
+        const loadComponents = async () => {
+            const components = [
+                { id: 'header', file: 'html/header.html' },
+                { id: 'hero', file: 'html/hero.html' },
+                { id: 'about', file: 'html/about.html' },
+                { id: 'experience-section', file: 'html/experience.html' },
+                { id: 'projects', file: 'html/projects.html' },
+                { id: 'certificates', file: 'html/certificates.html' },
+                { id: 'contact', file: 'html/contact.html' },
+                { id: 'footer', file: 'html/footer.html' }
+            ];
+
+            for (const component of components) {
+                try {
+                    const response = await fetch(component.file);
+                    const html = await response.text();
+                    document.getElementById(component.id).innerHTML = html;
+
+                    // Trigger inisialisasi JS setelah komponen dimuat
+                    if (component.id === 'projects') {
+                        setTimeout(() => {
+                            if (window.initProjects) window.initProjects();
+                        }, 100);
+                    } else if (component.id === 'certificates') {
+                        setTimeout(() => {
+                            if (window.initCertificates) window.initCertificates();
+                        }, 100);
+                    } else if (component.id === 'contact') {
+                        // **PENTING:** Inisialisasi TSParticles dan Event Listeners untuk formulir kontak
+                        // Panggil setelah contact.html dimuat ke DOM
+                        setTimeout(() => {
+                            if (window.initContactParticles) window.initContactParticles();
+                            if (window.addContactEventListeners) window.addContactEventListeners();
+                        }, 100);
+                    }
+                } catch (error) {
+                    console.error(`Error loading ${component.id}:`, error);
+                }
+            }
+
+            // Load JS files after all HTML components are loaded
+            const jsFiles = [
+                'js/projectsData.js',
+                'js/projects.js',
+                'js/header.js',
+                'js/hero.js',
+                'js/aboutData.js',
+                'js/about.js',
+                'js/experience.js',
+                'js/certificatesData.js',
+                'js/certificates.js',
+                'js/contact.js', // Pastikan contact.js dimuat terakhir jika ada global dependency
+                'js/footer.js'
+            ];
+
+            for (const file of jsFiles) {
+                const script = document.createElement('script');
+                // Tentukan type='module' jika memang file JS tersebut adalah module ES6
+                // Berdasarkan daftar Anda, projects.js, certificates.js, about.js, aboutData.js, projectsData.js adalah module
+                // contact.js tidak perlu module type karena menggunakan window scope
+                if (
+                    file === 'js/projects.js' ||
+                    file === 'js/projectsData.js' ||
+                    file === 'js/certificates.js' ||
+                    file === 'js/certificatesData.js' ||
+                    file === 'js/about.js' ||
+                    file === 'js/aboutData.js'
+                ) {
+                    script.type = 'module';
+                }
+                script.src = file;
+                document.body.appendChild(script);
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', loadComponents);
+    </script>
+</body>
+
+</html>

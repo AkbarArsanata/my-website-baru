@@ -1,0 +1,754 @@
+/* ===== VARIABLES ===== */
+:root {
+    --primary: #00d9ff;
+    --secondary: #0066ff;
+    --dark-blue: #0a0a2a;
+    --neon-glow: 0 0 15px rgba(0, 217, 255, 0.7);
+    --neon-pulse: 0 0 20px rgba(0, 217, 255, 0.9);
+}
+
+/* ===== DASHBOARD LAYOUT ===== */
+.dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    width: 100%;
+    min-height: 80vh;
+    padding: 30px 10px;
+    /* ubah padding agar tidak overflow */
+    box-sizing: border-box;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden;
+    /* sudah ada */
+    overflow-y: hidden;
+    /* tambahkan ini untuk menghilangkan scrollbar vertikal */
+    /* HAPUS background di sini */
+    /* background: linear-gradient(135deg, #0a0a2a 0%, #0a192f 100%); */
+}
+
+/* ===== CYBER CARD STYLES ===== */
+.cyber-card {
+    position: relative;
+    background: rgba(16, 18, 37, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 16px;
+    box-shadow: 0 4px 32px 0 rgba(0, 217, 255, 0.1), 0 1.5px 8px 0 rgba(0, 0, 0, 0.12);
+    border: 1.5px solid rgba(0, 217, 255, 0.18);
+    transition: box-shadow 0.3s, transform 0.3s;
+    z-index: 1;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cyber-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right,
+            rgba(0, 217, 255, 0.1),
+            rgba(0, 102, 255, 0.05),
+            transparent 70%);
+    transform: rotate(30deg);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.cyber-card:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow: 0 0 32px 8px #00d9ff44, 0 8px 32px 0 rgba(0, 0, 70, 0.18);
+    border-color: #00d9ff88;
+}
+
+/* ===== TECH GLOBE STYLES ===== */
+.globe-container {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    min-height: 350px;
+    height: 350px;
+    margin: 0 auto;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
+}
+
+.globe-container:active {
+    cursor: grabbing;
+}
+
+.globe {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-card {
+    position: absolute;
+    width: 40px;
+    /* was 70px */
+    height: 40px;
+    /* was 70px */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    /* was 10px */
+    transition: all 0.5s ease;
+    box-shadow: 0 0 15px rgba(0, 247, 255, 0.3);
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform-origin: center center;
+    z-index: 1;
+}
+
+.logo-card:hover {
+    transform: scale(1.2) translateZ(50px);
+    box-shadow: var(--neon-pulse);
+    z-index: 10;
+}
+
+.logo-card::before {
+    content: attr(data-name);
+    position: absolute;
+    bottom: -20px;
+    /* was -25px */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: var(--primary);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 9px;
+    /* was 10px */
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    white-space: nowrap;
+}
+
+.logo-card:hover::before {
+    opacity: 1;
+}
+
+.logo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(0, 247, 255, 0.7));
+    transition: all 0.3s ease;
+}
+
+.logo-card:hover img {
+    filter: drop-shadow(0 0 15px rgba(0, 247, 255, 0.9));
+}
+
+.connection {
+    position: absolute;
+    background: linear-gradient(to right, rgba(0, 217, 255, 0.3), rgba(0, 102, 255, 0.3));
+    height: 1px;
+    transform-origin: 0 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.globe-center {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, var(--primary), transparent 70%);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--primary);
+    z-index: 0;
+}
+
+/* ===== PROFILE CARD STYLES ===== */
+.profile-card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+    /* pointer-events: none; JANGAN di sini */
+    cursor: pointer;
+}
+
+.profile-card:hover {
+    transform: rotateY(180deg);
+}
+
+/* Flip saat hover di cyber-card */
+.cyber-card:hover .profile-card {
+    transform: rotateY(180deg);
+}
+
+/* Tambahkan ini agar sisi belakang tidak menerima pointer event */
+.card-face.back {
+    pointer-events: none;
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 150, 255, 0.5);
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.front {
+    background: linear-gradient(135deg, rgba(10, 20, 50, 0.7), rgba(5, 10, 30, 0.9));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.back {
+    background: linear-gradient(135deg, rgba(5, 10, 30, 0.9), rgba(10, 20, 50, 0.7));
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--primary);
+    object-fit: cover;
+    box-shadow: var(--neon-glow);
+    margin-right: 20px;
+}
+
+.title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 150, 255, 0.5);
+}
+
+.subtitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1rem;
+    margin: 5px 0 0;
+    color: rgba(0, 200, 255, 0.8);
+    letter-spacing: 2px;
+}
+
+.specializations-title {
+    color: var(--primary);
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--primary), transparent);
+    margin: 15px 0;
+}
+
+.content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.bio {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 20px;
+}
+
+.contact {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    color: rgba(0, 200, 255, 0.9);
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.contact-item:hover {
+    color: white;
+    text-shadow: var(--neon-glow);
+}
+
+.contact-icon {
+    margin-right: 5px;
+    font-size: 1rem;
+}
+
+.specialization {
+    background: rgba(0, 100, 255, 0.1);
+    border: 1px solid rgba(0, 150, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s;
+}
+
+.specialization:hover {
+    background: rgba(0, 100, 255, 0.2);
+    box-shadow: var(--neon-glow);
+    transform: translateY(-3px);
+}
+
+.specialization-title {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--primary);
+    margin: 0 0 5px;
+    font-size: 1rem;
+}
+
+.specialization-desc {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.quote {
+    text-align: center;
+    color: rgba(0, 200, 255, 0.8);
+    font-size: 0.9rem;
+}
+
+/* ===== FLOATING ELEMENTS ===== */
+.floating-elements {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.floating-element {
+    position: absolute;
+    background: rgba(0, 150, 255, 0.1);
+    border: 1px solid rgba(0, 200, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(1px);
+}
+
+.floating-element:nth-child(1) {
+    width: 100px;
+    height: 100px;
+    top: -30px;
+    left: -30px;
+    animation: float 15s infinite linear;
+}
+
+.floating-element:nth-child(2) {
+    width: 60px;
+    height: 60px;
+    bottom: 50px;
+    right: 50px;
+    animation: float 12s infinite linear reverse;
+}
+
+.floating-element:nth-child(3) {
+    width: 40px;
+    height: 40px;
+    top: 100px;
+    right: 100px;
+    animation: float 8s infinite linear;
+}
+
+.neon-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    pointer-events: none;
+    box-shadow:
+        0 0 10px rgba(0, 200, 255, 0.5),
+        inset 0 0 10px rgba(0, 200, 255, 0.3);
+    animation: pulse 3s infinite alternate;
+}
+
+/* ===== PARTICLES ===== */
+.particles {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(0, 217, 255, 0.5);
+    border-radius: 50%;
+    filter: blur(1px);
+    animation: float-particle 15s infinite linear;
+}
+
+@keyframes float {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    25% {
+        transform: translate(20px, 20px) rotate(90deg);
+    }
+
+    50% {
+        transform: translate(0, 40px) rotate(180deg);
+    }
+
+    75% {
+        transform: translate(-20px, 20px) rotate(270deg);
+    }
+
+    100% {
+        transform: translate(0, 0) rotate(360deg);
+    }
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 200, 255, 0.5), inset 0 0 10px rgba(0, 200, 255, 0.3);
+    }
+
+    100% {
+        box-shadow: 0 0 20px rgba(0, 200, 255, 0.8), inset 0 0 15px rgba(0, 200, 255, 0.5);
+    }
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 1200px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .cyber-card {
+        height: 500px;
+    }
+
+    .logo-card {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .globe-container {
+        max-width: 260px;
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .tech-mastered-title {
+        max-width: 260px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        grid-template-columns: 1fr;
+        padding: 10px 2vw;
+        gap: 18px;
+        max-width: 100vw;
+    }
+
+    .cyber-card {
+        min-width: 0;
+        width: 100%;
+        margin: 0 auto;
+        height: auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .globe-container {
+        max-width: 180px;
+        min-height: 180px;
+        height: 180px;
+    }
+
+    .tech-mastered-title {
+        max-width: 180px;
+        font-size: 1.1rem;
+    }
+}
+
+.logo-tooltip {
+    position: absolute;
+    left: 50%;
+    bottom: 110%;
+    transform: translateX(-50%);
+    background: rgba(10, 20, 50, 0.95);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 20;
+    box-shadow: 0 2px 12px rgba(0, 217, 255, 0.25);
+}
+
+.logo-card:hover .logo-tooltip {
+    opacity: 1;
+}
+
+.techstack-desc {
+    margin: 30px 20px 10px 20px;
+    color: #bff6ff;
+    font-size: 0.95rem;
+    background: rgba(10, 20, 50, 0.7);
+    border-radius: 10px;
+    padding: 18px 22px;
+    box-shadow: 0 0 18px 0 rgba(0, 217, 255, 0.08);
+}
+
+.techstack-desc h3 {
+    color: var(--primary);
+    font-family: 'Orbitron', sans-serif;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.techstack-desc ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.techstack-desc li {
+    margin-bottom: 7px;
+    line-height: 1.5;
+}
+
+.tech-mastered-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 2.2rem;
+    font-family: 'Orbitron', 'Segoe UI', Arial, sans-serif;
+    letter-spacing: 3px;
+    margin-bottom: 24px;
+    /* tambah jarak bawah */
+    margin-top: 18px;
+    /* tambah jarak atas */
+    padding: 0 8px;
+    /* batasi lebar agar tidak melebihi globe */
+    max-width: 350px;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(90deg, #00eaff 30%, #0066ff 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: neon-flicker 2.5s infinite alternate;
+}
+
+/* Responsive: pastikan judul tetap proporsional */
+@media (max-width: 900px) {
+    .tech-mastered-title {
+        max-width: 260px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .tech-mastered-title {
+        max-width: 180px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Hilangkan scrollbar horizontal di seluruh halaman */
+html,
+body {
+    overflow-x: hidden;
+    max-width: 100vw;
+    background: linear-gradient(135deg, #0a0a2a 0%, #0a192f 100%);
+    min-height: 100vh;
+    font-family: 'Segoe UI', 'Orbitron', Arial, sans-serif;
+    color: #eafcff;
+    margin: 0;
+    padding: 0;
+}
+
+img,
+svg {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Neon Page Transition Bar - Futuristic Glasmorphism */
+.neon-transition {
+    width: 100vw;
+    height: 5px;
+    position: relative;
+    z-index: 100;
+    overflow: visible;
+    background: transparent;
+    pointer-events: none;
+    margin: 0;
+    padding: 0;
+}
+
+.neon-transition-top {
+    margin-bottom: -2px;
+}
+
+.neon-transition-bottom {
+    margin-top: -2px;
+}
+
+/* Layer 1: Soft outer glow */
+.neon-transition::before {
+    content: '';
+    position: absolute;
+    left: -10vw;
+    top: 0;
+    width: 120vw;
+    height: 100%;
+    background: linear-gradient(90deg, #00f0ff 0%, #00bfff 50%, #0066ff 100%);
+    opacity: 0.25;
+    filter: blur(12px);
+    z-index: 1;
+    animation: neon-bar-move 4s linear infinite;
+}
+
+/* Layer 2: Thin bright neon line */
+.neon-transition::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 100vw;
+    height: 2px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, transparent 0%, #00eaff 30%, #fff 50%, #00bfff 70%, transparent 100%);
+    opacity: 0.85;
+    filter: blur(0.5px) brightness(1.7);
+    z-index: 2;
+    box-shadow: 0 0 8px 2px #00eaff66, 0 0 16px 4px #00eaff22;
+    animation: neon-bar-shimmer 2.5s linear infinite;
+}
+
+/* Layer 3: Animated shimmer highlight */
+.neon-transition .neon-shimmer {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    pointer-events: none;
+    z-index: 3;
+    background: linear-gradient(90deg, transparent 0%, #fff 10%, #00eaff 50%, #fff 90%, transparent 100%);
+    opacity: 0.18;
+    filter: blur(2px);
+    mix-blend-mode: lighten;
+    animation: neon-shimmer-move 2.2s linear infinite;
+}
+
+/* Keyframes */
+@keyframes neon-bar-move {
+    0% {
+        left: -10vw;
+    }
+
+    100% {
+        left: 10vw;
+    }
+}
+
+@keyframes neon-bar-shimmer {
+    0% {
+        filter: blur(0.5px) brightness(1.7);
+    }
+
+    50% {
+        filter: blur(1.5px) brightness(2.2);
+    }
+
+    100% {
+        filter: blur(0.5px) brightness(1.7);
+    }
+}
+
+@keyframes neon-shimmer-move {
+    0% {
+        background-position: -100vw 0;
+    }
+
+    100% {
+        background-position: 100vw 0;
+    }
+}
