@@ -1,32 +1,49 @@
-<div class="contact-section">
-    <div id="tsparticles"></div>
-    <div class="grid-overlay"></div>
-
+<section id="contact" class="contact-section">
+    <div class="background-simple-gradient"></div>
+    <div class="background-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
     <div class="contact-container">
-        <h2 id="contactTitle">Connect With Me</h2>
-
+        <div class="contact-header">
+            <h2 id="contactTitle">Get in Touch</h2>
+            <p class="subtitle">Have a question or a collaboration? Fill out the form below!</p>
+        </div>
         <form id="contactForm" action="https://formspree.io/f/xdkzyznz" method="POST">
             <div class="input-group">
-                <label for="email">Email Anda:</label>
-                <input type="email" id="email" name="email" required placeholder="email@contoh.com">
+                <input type="text" id="name" name="name" required placeholder="Your Full Name" autocomplete="name"
+                    aria-label="Your Full Name">
+                <div class="error-message" id="nameError"></div>
+            </div>
+            <div class="input-group">
+                <input type="email" id="email" name="email" required placeholder="Your Email Address"
+                    autocomplete="email" aria-label="Your Email Address">
                 <div class="error-message" id="emailError"></div>
             </div>
             <div class="input-group">
-                <label for="message">Pesan Anda:</label>
-                <textarea id="message" name="message" rows="5" required
-                    placeholder="Tulis pesan Anda di sini..."></textarea>
+                <input type="text" id="subject" name="subject" required placeholder="Message Subject" autocomplete="off"
+                    aria-label="Message Subject">
+                <div class="error-message" id="subjectError"></div>
+            </div>
+            <div class="input-group">
+                <textarea id="message" name="message" required
+                    placeholder="Write Your Message Here (Max. 500 characters)" autocomplete="off"
+                    aria-label="Write Your Message Here" maxlength="500"></textarea>
+                <div class="char-count" id="charCount">0/500</div>
                 <div class="error-message" id="messageError"></div>
             </div>
-
-            <button type="submit" class="btn">Kirim Pesan</button>
+            <button type="submit" class="btn">Send Message</button>
         </form>
-
         <div id="successMessageContainer" class="success-message-container">
-            <div class="success-icon">✔</div>
-            <div class="transfer-indicator"></div>
-            <h3>Data Anda Terverifikasi!</h3>
-            <p>Terima kasih telah menghubungi kami. Tim kami akan segera merespons melalui saluran yang sesuai.</p>
-            <button type="button" class="reset-btn" onclick="window.resetContactForm()">Kirim Pesan Baru</button>
+            <div class="success-icon">✓</div>
+            <h3>Message Sent!</h3>
+            <p>Thank you for reaching out. Your message has been received and will be processed shortly. We'll get back
+                to you within 1 business day.</p>
+            <button type="button" class="reset-btn" onclick="window.resetContactForm()">Send New Message</button>
         </div>
     </div>
-</div>
+</section>

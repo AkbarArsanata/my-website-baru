@@ -109,6 +109,7 @@ function createCertificateCard(cert, category) {
 
     // PERBAIKAN DI SINI: Definisikan issuerInfo
     const issuerInfo = cert.date ? `<p class="certificate-date">${cert.date}</p>` : ''; // Misalnya, gunakan tanggal jika ada
+    const durationInfo = cert.duration ? `<p class="certificate-duration"><i class="fas fa-clock"></i> ${cert.duration}</p>` : "";
 
     const card = document.createElement("div");
     card.className = "certificate-card";
@@ -126,6 +127,7 @@ function createCertificateCard(cert, category) {
             <div class="certificate-desc" style="color:#b3e5fc;font-size:1rem;margin-bottom:0.7rem;">
                 ${cert.desc ? cert.desc : "Sertifikat resmi yang membuktikan keahlian di bidang ini."}
             </div>
+            ${durationInfo} <!-- Tambahkan ini untuk menampilkan waktu -->
             ${issuerInfo}
             <div class="certificate-actions">
                 <a href="${encodedPdfUrl}" target="_blank" class="view-pdf-btn magnetic-btn" data-pdf-url="${encodedPdfUrl}" 

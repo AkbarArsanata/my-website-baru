@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="css/certificates.css">
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/footer.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
@@ -36,8 +36,37 @@
     <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
 
     <script>
-        // Load all components
-        const loadComponents = async () => {
+        const loadScript = (src, type = 'text/javascript') => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.type = type;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        };
+
+        const loadComponentsAndScripts = async () => {
+            // Load all necessary JS files first, especially those defining initialization functions
+            const jsFilesToLoad = [
+                { src: 'js/projectsData.js', type: 'module' },
+                { src: 'js/projects.js', type: 'module' },
+                { src: 'js/certificatesData.js', type: 'module' },
+                { src: 'js/certificates.js', type: 'module' },
+                { src: 'js/aboutData.js', type: 'module' },
+                { src: 'js/about.js', type: 'module' },
+                { src: 'js/contact.js' }, // No 'module' type needed if it uses window scope
+                { src: 'js/header.js' },
+                { src: 'js/hero.js' },
+                { src: 'js/experience.js' },
+                { src: 'js/footer.js' }
+            ];
+
+            // Load all JS files in parallel
+            await Promise.all(jsFilesToLoad.map(file => loadScript(file.src, file.type)));
+
+            // Now, load HTML components
             const components = [
                 { id: 'header', file: 'html/header.html' },
                 { id: 'hero', file: 'html/hero.html' },
@@ -55,64 +84,23 @@
                     const html = await response.text();
                     document.getElementById(component.id).innerHTML = html;
 
-                    // Trigger inisialisasi JS setelah komponen dimuat
-                    if (component.id === 'projects') {
-                        setTimeout(() => {
-                            if (window.initProjects) window.initProjects();
-                        }, 100);
-                    } else if (component.id === 'certificates') {
-                        setTimeout(() => {
-                            if (window.initCertificates) window.initCertificates();
-                        }, 100);
+                    // Trigger JS initialization after the component is loaded
+                    // These functions should now be defined because their JS files are loaded
+                    if (component.id === 'projects' && window.initProjects) {
+                        window.initProjects();
+                    } else if (component.id === 'certificates' && window.initCertificates) {
+                        window.initCertificates();
                     } else if (component.id === 'contact') {
-                        // **PENTING:** Inisialisasi TSParticles dan Event Listeners untuk formulir kontak
-                        // Panggil setelah contact.html dimuat ke DOM
-                        setTimeout(() => {
-                            if (window.initContactParticles) window.initContactParticles();
-                            if (window.addContactEventListeners) window.addContactEventListeners();
-                        }, 100);
+                        if (window.initContactParticles) window.initContactParticles();
+                        if (window.addContactEventListeners) window.addContactEventListeners();
                     }
                 } catch (error) {
                     console.error(`Error loading ${component.id}:`, error);
                 }
             }
-
-            // Load JS files after all HTML components are loaded
-            const jsFiles = [
-                'js/projectsData.js',
-                'js/projects.js',
-                'js/header.js',
-                'js/hero.js',
-                'js/aboutData.js',
-                'js/about.js',
-                'js/experience.js',
-                'js/certificatesData.js',
-                'js/certificates.js',
-                'js/contact.js', // Pastikan contact.js dimuat terakhir jika ada global dependency
-                'js/footer.js'
-            ];
-
-            for (const file of jsFiles) {
-                const script = document.createElement('script');
-                // Tentukan type='module' jika memang file JS tersebut adalah module ES6
-                // Berdasarkan daftar Anda, projects.js, certificates.js, about.js, aboutData.js, projectsData.js adalah module
-                // contact.js tidak perlu module type karena menggunakan window scope
-                if (
-                    file === 'js/projects.js' ||
-                    file === 'js/projectsData.js' ||
-                    file === 'js/certificates.js' ||
-                    file === 'js/certificatesData.js' ||
-                    file === 'js/about.js' ||
-                    file === 'js/aboutData.js'
-                ) {
-                    script.type = 'module';
-                }
-                script.src = file;
-                document.body.appendChild(script);
-            }
         };
 
-        document.addEventListener('DOMContentLoaded', loadComponents);
+        document.addEventListener('DOMContentLoaded', loadComponentsAndScripts);
     </script>
 </body>
 

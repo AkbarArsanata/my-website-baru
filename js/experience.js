@@ -14,11 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Animasi untuk Judul dan Subtitle Bagian
     gsap.from(".section-header .section-title", {
-        y: -50,
+        y: -60,
         opacity: 0,
-        duration: 1,
+        duration: 1.2,
         ease: "back.out(1.7)",
-        delay: 0.8
+        delay: 0.2
     });
 
     gsap.from(".section-header .section-divider", {
@@ -26,15 +26,15 @@ document.addEventListener('DOMContentLoaded', () => {
         opacity: 0,
         duration: 1,
         ease: "power2.out",
-        delay: 1.2
+        delay: 0.7
     });
 
     gsap.from(".section-header .section-subtitle", {
-        y: 30,
+        y: 40,
         opacity: 0,
         duration: 1,
         ease: "power2.out",
-        delay: 1.5
+        delay: 1.1
     });
 
     // Animasi untuk Garis Timeline Utama
@@ -138,6 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 duration: 0.2
             });
         });
+
+        // Add scanline
+        const scanline = document.createElement('div');
+        scanline.className = 'scanline';
+        item.querySelector('.timeline-content').appendChild(scanline);
     });
 
     // Particle background using tsParticles
@@ -169,6 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
         // Smooth animation
         gsap.to(progressBar, { height: progress + '%', duration: 0.3, overwrite: true });
     });
+
+    // Parallax effect for timeline background
+    const timelineBg = document.querySelector('.timeline');
+    if (timelineBg) {
+        const offset = window.scrollY * 0.08;
+        timelineBg.style.backgroundPosition = `center ${offset}px`;
+    }
 
     // Expand/collapse timeline card
     document.querySelectorAll('.timeline-content').forEach(card => {
@@ -320,4 +332,64 @@ document.addEventListener('DOMContentLoaded', () => {
             container.appendChild(dot);
         }
     })();
+
+    // Neon Canvas Particle Background
+    (function neonParticles() {
+        const canvas = document.getElementById('neon-particles-bg');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = document.querySelector('.experience').offsetHeight;
+        window.addEventListener('resize', () => {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = document.querySelector('.experience').offsetHeight;
+        });
+        const colors = ['#00e5ff', '#8a2be2', '#fff', '#38bdf8'];
+        const particles = Array.from({ length: 36 }, () => ({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: 2 + Math.random() * 5,
+            dx: -0.5 + Math.random(),
+            dy: -0.5 + Math.random(),
+            c: colors[Math.floor(Math.random() * colors.length)],
+            o: 0.18 + Math.random() * 0.22
+        }));
+        function draw() {
+            ctx.clearRect(0, 0, w, h);
+            for (const p of particles) {
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+                ctx.shadowColor = p.c;
+                ctx.shadowBlur = 16;
+                ctx.globalAlpha = p.o;
+                ctx.fillStyle = p.c;
+                ctx.fill();
+                ctx.globalAlpha = 1;
+                p.x += p.dx;
+                p.y += p.dy;
+                if (p.x < 0 || p.x > w) p.dx *= -1;
+                if (p.y < 0 || p.y > h) p.dy *= -1;
+            }
+            requestAnimationFrame(draw);
+        }
+        draw();
+    })();
+
+    window.addEventListener('scroll', () => {
+        const title = document.querySelector('.section-title');
+        if (title) {
+            title.style.transform = `translateY(${window.scrollY * 0.08}px)`;
+        }
+    });
+});
+
+document.querySelectorAll('.timeline-content').forEach(card => {
+    card.addEventListener('mousemove', e => {
+        const trail = document.createElement('span');
+        trail.className = 'neon-trail';
+        trail.style.left = (e.clientX - card.getBoundingClientRect().left) + 'px';
+        trail.style.top = (e.clientY - card.getBoundingClientRect().top) + 'px';
+        card.appendChild(trail);
+        setTimeout(() => trail.remove(), 400);
+    });
 });

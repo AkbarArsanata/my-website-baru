@@ -180,18 +180,26 @@ function createProjectCard(project) {
       ${project.featured ? `<span class="project-badge">Featured</span>` : ''}
       <div class="project-overlay">
         <div class="view-project">
-          <i class="fas fa-expand"></i>
-          <span>View Project</span>
         </div>
       </div>
       <div class="project-shine"></div>
     </div>
     <div class="project-info">
       <h3>${project.title}</h3>
+      <span class="project-team-badge" title="Team Size">
+        <i class="fas fa-users"></i>
+        <span class="team-label">Team</span>
+        <span class="team-value">${project.teamSize || "1 person"}</span>
+      </span>
       <p class="project-description">${project.description}</p>
       <div class="project-meta">
-        <span class="project-date">
-          <i class="far fa-calendar-alt"></i> ${formatDate(project.date)}
+        <span class="project-language-badge" title="Project language: ${project.language}">
+          ${project.language === 'English'
+      ? `<span class="lang-flag" aria-label="English"><img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/gb.svg" alt="English" /></span>`
+      : `<span class="lang-flag" aria-label="Indonesia"><img src="https://cdn.jsdelivr.net/gh/hjnilsson/country-flags/svg/id.svg" alt="Indonesia" /></span>`
+    }
+          <span class="lang-label">Available in</span>
+          <span class="lang-value">${project.language}</span>
         </span>
       </div>
       <div class="project-tags">
@@ -204,7 +212,7 @@ function createProjectCard(project) {
       </div>
       <div class="project-links">
         <a href="${project.demo}" class="project-btn demo" target="_blank" rel="noopener">
-          <i class="fas fa-external-link-alt"></i> View Demo
+          <i class="fas fa-external-link-alt"></i> View Project
         </a>
       </div>
     </div>
@@ -291,6 +299,7 @@ function openProjectModal(project) {
   isAnimating = true;
   currentProjectIndex = filteredProjects.findIndex(p => p.id === project.id);
 
+  // Tambahkan tab navigation
   DOM.modalBody.innerHTML = `
     <div class="modal-header">
       <h2>${project.title}</h2>
@@ -298,6 +307,11 @@ function openProjectModal(project) {
         <span><i class="far fa-calendar-alt"></i> ${formatDate(project.date)}</span>
         <span><i class="fas fa-layer-group"></i> ${categoryLabels[project.category] || project.category.replace('-', ' ')}</span>
       </div>
+    </div>
+    <div class="modal-tabs">
+      <button class="modal-tab-btn active" data-tab="overview">Overview</button>
+      <button class="modal-tab-btn" data-tab="features">Key Features</button>
+      <button class="modal-tab-btn" data-tab="tech">Technologies</button>
     </div>
     <div class="modal-content-inner">
       <div class="modal-image-container">
@@ -307,11 +321,11 @@ function openProjectModal(project) {
         </div>
       </div>
       <div class="modal-details">
-        <div class="modal-description-container">
+        <div class="modal-tab-content" data-tab-content="overview">
           <h3>Project Overview</h3>
           <p class="modal-description">${project.longDescription}</p>
         </div>
-        <div class="modal-features">
+        <div class="modal-tab-content" data-tab-content="features" style="display:none;">
           <h3 style="color:#ff1744;">&#128293; Key Features</h3>
           <ul>
             ${project.features ? project.features.map(feature => `
@@ -322,7 +336,7 @@ function openProjectModal(project) {
             `).join('') : ''}
           </ul>
         </div>
-        <div class="modal-tech">
+        <div class="modal-tab-content" data-tab-content="tech" style="display:none;">
           <h3>Technologies Used</h3>
           <div class="modal-tags">
             ${project.tags.map(tag => `
@@ -446,6 +460,20 @@ function openProjectModal(project) {
       navigateProjects('next');
     });
   }
+
+  // Tab switching logic
+  const tabBtns = DOM.modalBody.querySelectorAll('.modal-tab-btn');
+  const tabContents = DOM.modalBody.querySelectorAll('.modal-tab-content');
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const tab = this.dataset.tab;
+      tabContents.forEach(content => {
+        content.style.display = content.dataset.tabContent === tab ? 'block' : 'none';
+      });
+    });
+  });
 
   setTimeout(() => {
     isAnimating = false;

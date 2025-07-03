@@ -1,17 +1,40 @@
 <nav class="glass-navbar">
     <div class="glass-container">
-        <a href="about.html" class="glass-logo">MyPortfolio</a>
-        <ul class="glass-nav-links">
+        <a href="about.html" class="glass-logo">
+            MY PORTFOLIO
+        </a>
+        <ul class="glass-nav-links" id="glass-nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#certificates">Certificates</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="glass-hamburger" id="glass-hamburger">
+        <button class="glass-hamburger" id="glass-hamburger" aria-label="Toggle navigation">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
     </div>
 </nav>
+<script>
+    // filepath: c:\Users\User\Downloads\website_baru\html\header.html
+    document.addEventListener('DOMContentLoaded', function () {
+        const hamburger = document.getElementById('glass-hamburger');
+        const navLinks = document.getElementById('glass-nav-links');
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Tutup menu saat klik link (mobile)
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>

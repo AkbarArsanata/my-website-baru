@@ -25,12 +25,49 @@
         <span></span>
         <span></span>
     </div>
+    <canvas id="neon-particles-bg"></canvas>
 
+    <div class="neon-blobs">
+        <div class="blob"></div>
+        <div class="blob"></div>
+    </div>
+
+    <div class="section-header">
+        <h2 class="section-title neon-title">My Journey</h2>
+        <div class="section-divider"></div>
+        <p class="section-subtitle">A timeline of my professional and learning experiences</p>
+    </div>
 
     <div class="timeline">
+        <div class="timeline-edge top-edge">
+        </div>
+        <div class="timeline-animated-dot start-dot">
+            <span class="dot-orbit"></span>
+            <span class="dot-glow"></span>
+            <span class="dot-inner"></span>
+            <span class="dot-icon">
+                <!-- SVG Rocket Launch Icon -->
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <g filter="url(#glowStart)">
+                        <path d="M19 6 L23 20 L19 17 L15 20 Z" fill="#00ffe7" />
+                        <ellipse cx="19" cy="25" rx="4" ry="7" fill="#00ffe7" opacity="0.6" />
+                        <ellipse cx="19" cy="34" rx="3" ry="3" fill="#00ffb3" opacity="0.8" />
+                    </g>
+                    <defs>
+                        <filter id="glowStart" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+            </span>
+        </div>
         <div class="timeline-item">
-            <div class="timeline-dot"></div>
             <div class="timeline-date">2025-Present</div>
+            <div class="timeline-dot"></div>
             <div class="timeline-content">
                 <div class="timeline-card">
                     <div class="card-header">
@@ -193,7 +230,33 @@
                 </div>
             </div>
         </div>
-
+        <div class="timeline-animated-dot end-dot">
+            <span class="dot-orbit"></span>
+            <span class="dot-glow"></span>
+            <span class="dot-inner"></span>
+            <span class="dot-icon">
+                <!-- SVG Target Icon -->
+                <svg width="38" height="38" viewBox="0 0 38 38" fill="none">
+                    <g filter="url(#glowEnd)">
+                        <circle cx="19" cy="19" r="14" stroke="#ff3366" stroke-width="4" fill="none" />
+                        <circle cx="19" cy="19" r="7" fill="#ff3366" opacity="0.7" />
+                        <rect x="17" y="8" width="4" height="12" rx="2" fill="#fff" opacity="0.7" />
+                    </g>
+                    <defs>
+                        <filter id="glowEnd" x="0" y="0" width="38" height="38" filterUnits="userSpaceOnUse">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur" />
+                            <feMerge>
+                                <feMergeNode in="coloredBlur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                </svg>
+            </span>
+        </div>
+        <div class="timeline-edge bottom-edge">
+            <span class="timeline-label">End</span>
+        </div>
         <div class="timeline-connector"></div>
     </div>
     <div class="timeline-progress"></div>
@@ -207,4 +270,11 @@
         <div class="divider-shine"></div>
         <div class="divider-particles"></div>
     </div>
+</div>
+
+<div class="floating-neon-particles">
+    <span style="width:18px;height:18px;left:10%;top:20%;animation-delay:0s"></span>
+    <span style="width:12px;height:12px;left:80%;top:30%;animation-delay:1s"></span>
+    <span style="width:14px;height:14px;left:60%;top:60%;animation-delay:2s"></span>
+    <span style="width:10px;height:10px;left:30%;top:80%;animation-delay:3s"></span>
 </div>

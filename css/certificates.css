@@ -880,6 +880,21 @@ body {
     z-index: 10;
 }
 
+.pdf-loading-state {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 20, 30, 0.85);
+    z-index: 2;
+    min-height: 100px;
+}
+
 .loading-spinner {
     display: flex;
     gap: 10px;

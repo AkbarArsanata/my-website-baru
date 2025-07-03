@@ -186,15 +186,16 @@
 }
 
 .project-media {
-    position: relative;
-    height: 220px;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .project-media img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Ubah dari cover ke contain */
     transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     opacity: 0;
     transition: opacity 0.5s ease, transform 0.8s ease;
@@ -1081,4 +1082,182 @@
     cursor: not-allowed;
     box-shadow: none;
     background: linear-gradient(135deg, #334155, #64748b);
+}
+
+.project-language {
+    margin-left: 1.2rem;
+    color: #7dd3fc;
+    font-weight: 500;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+}
+
+.project-language .lang-label {
+    color: #38bdf8;
+    font-weight: 600;
+    margin-right: 0.3em;
+}
+
+.project-language .lang-value {
+    color: #f8fafc;
+    font-weight: 500;
+}
+
+.project-language-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #f1f5f9;
+    color: #0ea5e9;
+    border-radius: 1.5em;
+    padding: 0.25em 1em 0.25em 0.5em;
+    font-size: 1em;
+    font-weight: 600;
+    gap: 0.5em;
+    box-shadow: 0 1px 6px 0 rgba(14, 165, 233, 0.07);
+    border: 1.5px solid #bae6fd;
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+}
+
+.project-language-badge .lang-flag {
+    width: 1.3em;
+    height: 1.3em;
+    display: flex;
+    align-items: center;
+    margin-right: 0.3em;
+}
+
+.project-language-badge .lang-flag img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    background: #fff;
+}
+
+.project-language-badge .lang-label {
+    color: #0284c7;
+    font-weight: 700;
+    margin-right: 0.3em;
+    letter-spacing: 0.01em;
+}
+
+.project-language-badge .lang-value {
+    color: #0369a1;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.project-language-badge:hover {
+    background: rgba(14, 165, 233, 0.1);
+    transform: translateY(-2px);
+}
+
+.project-language-badge:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.3);
+}
+
+.project-language-badge .lang-tooltip {
+    display: none;
+    position: absolute;
+    left: 50%;
+    bottom: 120%;
+    transform: translateX(-50%);
+    background: rgba(14, 165, 233, 0.98);
+    color: #fff;
+    padding: 0.5em 1em;
+    border-radius: 1em;
+    font-size: 0.95em;
+    font-weight: 500;
+    white-space: nowrap;
+    box-shadow: 0 2px 12px rgba(14, 165, 233, 0.18);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.project-language-badge.super-glow:hover .lang-tooltip,
+.project-language-badge.super-glow:focus .lang-tooltip {
+    display: block;
+    opacity: 1;
+}
+
+.modal-tabs {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    justify-content: flex-start;
+}
+
+.modal-tab-btn {
+    background: none;
+    border: none;
+    color: #7dd3fc;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2em 2em 0 0;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+    position: relative;
+}
+
+.modal-tab-btn.active,
+.modal-tab-btn:hover {
+    background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+    color: #fff;
+}
+
+.modal-tab-content {
+    animation: fadeIn 0.4s;
+}
+
+.project-team-badge {
+    display: inline-flex;
+    align-items: center;
+    background: linear-gradient(90deg, #0ea5e9 60%, #38bdf8 100%);
+    color: #fff;
+    border-radius: 1.5em;
+    padding: 0.35em 1.1em 0.35em 0.8em;
+    font-size: 1em;
+    font-weight: 600;
+    gap: 0.5em;
+    box-shadow: 0 2px 10px 0 rgba(14, 165, 233, 0.13);
+    border: 1.5px solid #bae6fd;
+    margin: 0.5em 0 1.2em 0;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.project-team-badge i {
+    font-size: 1.15em;
+    margin-right: 0.3em;
+    background: #fff2;
+    border-radius: 50%;
+    padding: 0.22em;
+}
+
+.project-team-badge .team-label {
+    color: #bae6fd;
+    font-weight: 700;
+    margin-right: 0.3em;
+    letter-spacing: 0.01em;
+    font-size: 0.95em;
+}
+
+.project-team-badge .team-value {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    font-size: 1em;
+}
+
+.project-team-badge:hover {
+    background: linear-gradient(90deg, #38bdf8 60%, #0ea5e9 100%);
+    transform: translateY(-2px) scale(1.06);
+    box-shadow: 0 4px 18px 0 #38bdf8cc;
 }
