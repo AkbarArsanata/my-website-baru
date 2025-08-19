@@ -5,8 +5,8 @@
   --text: #e0e0e0;
   --bg1: #050709;
   --bg2: #0a0f1e;
-  --glow-strong: 0 0 25px rgba(0, 245, 160, 0.6);
-  --glow-soft: 0 0 12px rgba(0, 217, 245, 0.4);
+  --glow-strong: 0 0 25px rgba(0, 245, 160, 0.7);
+  --glow-soft: 0 0 12px rgba(0, 217, 245, 0.5);
   --transition: all 0.3s ease;
 }
 
@@ -32,6 +32,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
 /* Animated background gradient */
@@ -41,41 +43,74 @@
   100% { background-position: 0% 50%; }
 }
 
-/* CONTENT */
+/* Futuristic Greeting with typing effect */
 .greeting {
-  font-size: 1.2rem;
-  margin-bottom: 0.8rem;
-  opacity: 0.85;
-  letter-spacing: 0.5px;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  border-right: 2px solid var(--accent);
+  white-space: nowrap;
+  width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.7s infinite;
 }
 
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: var(--accent); }
+}
+
+/* Glowing futuristic title */
 .hero-title {
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
-  font-weight: 800;
-  margin-bottom: 1rem;
+  font-size: clamp(2.8rem, 6.5vw, 4.8rem);
+  font-weight: 900;
+  margin-bottom: 1.2rem;
   background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 25px rgba(0, 245, 160, 0.4),
-               0 0 45px rgba(0, 217, 245, 0.4);
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  text-shadow: 0 0 25px rgba(0, 245, 160, 0.5),
+               0 0 50px rgba(0, 217, 245, 0.5),
+               0 0 75px rgba(123, 97, 255, 0.6);
   animation: glowPulse 4s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
-  0%, 100% { text-shadow: 0 0 20px rgba(0, 245, 160, 0.5), 0 0 40px rgba(0, 217, 245, 0.5); }
-  50% { text-shadow: 0 0 30px rgba(123, 97, 255, 0.8), 0 0 60px rgba(0, 217, 245, 0.6); }
+  0%, 100% { text-shadow: 0 0 20px rgba(0, 245, 160, 0.6), 0 0 40px rgba(0, 217, 245, 0.6); }
+  50% { text-shadow: 0 0 35px rgba(123, 97, 255, 0.9), 0 0 70px rgba(0, 217, 245, 0.8); }
 }
 
+/* Subtitle with futuristic glow */
 .hero-subtitle {
-  font-size: clamp(1rem, 2.2vw, 1.3rem);
-  opacity: 0.9;
-  margin-bottom: 2.5rem;
-  line-height: 1.6;
-  max-width: 700px;
+  font-size: clamp(1rem, 2.3vw, 1.35rem);
+  opacity: 0.95;
+  margin-bottom: 3rem;
+  line-height: 1.7;
+  max-width: 720px;
   margin-inline: auto;
   color: #cbd5e1;
+  position: relative;
+}
+
+.hero-subtitle::after {
+  content: "";
+  display: block;
+  margin: 1.5rem auto 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 2px;
+  box-shadow: 0 0 15px var(--secondary);
 }
 
 /* Scroll Down Button */
@@ -84,21 +119,22 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 55px;
-  height: 55px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
   text-decoration: none;
   box-shadow: var(--glow-soft);
   transition: var(--transition);
-  animation: bounce 2s infinite;
+  animation: bounce 2s infinite, pulseRing 2s infinite;
+  position: relative;
 }
 
 .scroll-down:hover {
-  transform: scale(1.1);
+  transform: scale(1.15);
   background: linear-gradient(135deg, var(--secondary), var(--accent));
   box-shadow: var(--glow-strong);
 }
@@ -106,8 +142,21 @@
 /* Bounce Animation */
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(8px); }
-  60% { transform: translateY(4px); }
+  40% { transform: translateY(10px); }
+  60% { transform: translateY(5px); }
+}
+
+/* Pulsing outer glow ring */
+@keyframes pulseRing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 160, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(0, 245, 160, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 245, 160, 0);
+  }
 }
 
 /* BACK TO TOP */
@@ -128,6 +177,6 @@
 
 #backToTop:hover {
   background: linear-gradient(135deg, var(--secondary), var(--accent));
-  transform: scale(1.15);
+  transform: scale(1.2);
   box-shadow: var(--glow-strong);
 }
