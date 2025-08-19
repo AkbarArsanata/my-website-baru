@@ -1,17 +1,20 @@
 document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.getElementById('glass-hamburger');
-    const navLinks = document.querySelector('.glass-nav-links');
+    const navLinks = document.getElementById('glass-nav-links');
 
+    // Toggle mobile menu
     hamburger.addEventListener('click', function () {
         navLinks.classList.toggle('active');
         hamburger.classList.toggle('active');
     });
 
-    // Close mobile menu when clicking on a link
-    document.querySelectorAll('.glass-nav-links a').forEach(link => {
+    // Close menu when clicking a link (only for mobile)
+    navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            hamburger.classList.remove('active');
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
         });
     });
 
