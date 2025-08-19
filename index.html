@@ -2,109 +2,107 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
-    rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/header.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/about.css">
-  <link rel="stylesheet" href="css/experience.css">
-  <link rel="stylesheet" href="css/projects.css">
-  <link rel="stylesheet" href="css/certificates.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <!-- Removed header.css -->
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/projects.css">
+    <link rel="stylesheet" href="css/certificates.css">
+    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 
 <body>
-  <header id="header"></header>
-  <section id="hero"></section>
-  <section id="about"></section>
-  <section id="experience-section"></section>
-  <section id="projects"></section>
-  <section id="certificates"></section>
-  <section id="contact"></section>
-  <footer id="footer"></footer>
+    <!-- Removed header -->
+    <section id="hero"></section>
+    <section id="about"></section>
+    <section id="experience-section"></section>
+    <section id="projects"></section>
+    <section id="certificates"></section>
+    <section id="contact"></section>
+    <footer id="footer"></footer>
 
-  <!-- External libraries -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
 
-  <script>
-    const loadScript = (src, type = 'text/javascript') => {
-      return new Promise((resolve, reject) => {
-        const script = document.createElement('script');
-        script.src = src;
-        script.type = type;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.body.appendChild(script);
-      });
-    };
+    <script>
+        const loadScript = (src, type = 'text/javascript') => {
+            return new Promise((resolve, reject) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.type = type;
+                script.onload = resolve;
+                script.onerror = reject;
+                document.body.appendChild(script);
+            });
+        };
 
-    const loadComponentsAndScripts = async () => {
-      // Load non-header JS files first
-      const jsFilesToLoad = [
-        { src: 'js/projectsData.js', type: 'module' },
-        { src: 'js/projects.js', type: 'module' },
-        { src: 'js/certificatesData.js', type: 'module' },
-        { src: 'js/certificates.js', type: 'module' },
-        { src: 'js/aboutData.js', type: 'module' },
-        { src: 'js/about.js', type: 'module' },
-        { src: 'js/contact.js' },
-        { src: 'js/hero.js' },
-        { src: 'js/experience.js' },
-        { src: 'js/footer.js' }
-      ];
+        const loadComponentsAndScripts = async () => {
+            // Load all necessary JS files first
+            const jsFilesToLoad = [
+                { src: 'js/projectsData.js', type: 'module' },
+                { src: 'js/projects.js', type: 'module' },
+                { src: 'js/certificatesData.js', type: 'module' },
+                { src: 'js/certificates.js', type: 'module' },
+                { src: 'js/aboutData.js', type: 'module' },
+                { src: 'js/about.js', type: 'module' },
+                { src: 'js/contact.js' }, 
+                // Removed header.js
+                { src: 'js/hero.js' },
+                { src: 'js/experience.js' },
+                { src: 'js/footer.js' }
+            ];
 
-      await Promise.all(jsFilesToLoad.map(file => loadScript(file.src, file.type)));
+            // Load all JS files in parallel
+            await Promise.all(jsFilesToLoad.map(file => loadScript(file.src, file.type)));
 
-      // Load HTML components
-      const components = [
-        { id: 'header', file: 'html/header.html' },
-        { id: 'hero', file: 'html/hero.html' },
-        { id: 'about', file: 'html/about.html' },
-        { id: 'experience-section', file: 'html/experience.html' },
-        { id: 'projects', file: 'html/projects.html' },
-        { id: 'certificates', file: 'html/certificates.html' },
-        { id: 'contact', file: 'html/contact.html' },
-        { id: 'footer', file: 'html/footer.html' }
-      ];
+            // Now, load HTML components
+            const components = [
+                // Removed header.html
+                { id: 'hero', file: 'html/hero.html' },
+                { id: 'about', file: 'html/about.html' },
+                { id: 'experience-section', file: 'html/experience.html' },
+                { id: 'projects', file: 'html/projects.html' },
+                { id: 'certificates', file: 'html/certificates.html' },
+                { id: 'contact', file: 'html/contact.html' },
+                { id: 'footer', file: 'html/footer.html' }
+            ];
 
-      for (const component of components) {
-        try {
-          const response = await fetch(component.file);
-          const html = await response.text();
-          document.getElementById(component.id).innerHTML = html;
+            for (const component of components) {
+                try {
+                    const response = await fetch(component.file);
+                    const html = await response.text();
+                    document.getElementById(component.id).innerHTML = html;
 
-          // Run init after each component is loaded
-          if (component.id === 'header') {
-            await loadScript('js/header.js');
-            if (window.initHeader) window.initHeader();
-          } else if (component.id === 'projects' && window.initProjects) {
-            window.initProjects();
-          } else if (component.id === 'certificates' && window.initCertificates) {
-            window.initCertificates();
-          } else if (component.id === 'contact') {
-            if (window.initContactParticles) window.initContactParticles();
-            if (window.addContactEventListeners) window.addContactEventListeners();
-          }
-        } catch (error) {
-          console.error(`Error loading ${component.id}:`, error);
-        }
-      }
-    };
+                    // Trigger JS initialization after the component is loaded
+                    if (component.id === 'projects' && window.initProjects) {
+                        window.initProjects();
+                    } else if (component.id === 'certificates' && window.initCertificates) {
+                        window.initCertificates();
+                    } else if (component.id === 'contact') {
+                        if (window.initContactParticles) window.initContactParticles();
+                        if (window.addContactEventListeners) window.addContactEventListeners();
+                    }
+                } catch (error) {
+                    console.error(`Error loading ${component.id}:`, error);
+                }
+            }
+        };
 
-    document.addEventListener('DOMContentLoaded', loadComponentsAndScripts);
-  </script>
+        document.addEventListener('DOMContentLoaded', loadComponentsAndScripts);
+    </script>
 
-  <!-- Analytics -->
-  <script data-goatcounter="https://akbararsanata85.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://akbararsanata85.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
+
 </html>
