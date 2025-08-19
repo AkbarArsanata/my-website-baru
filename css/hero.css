@@ -78,39 +78,36 @@
   color: #cbd5e1;
 }
 
-/* HORIZONTAL BUTTONS */
+/* Hero Buttons Container */
 .hero-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;              /* slightly more spacing */
   justify-content: center;
-  flex-wrap: nowrap; /* force horizontal only */
-  overflow-x: auto;  /* allows scrolling if screen too small */
-  padding: 0.6rem 1rem;
+  flex-wrap: wrap;          /* allow wrapping instead of forcing one row */
+  padding: 1rem 1.5rem;     /* more padding inside container */
   border-radius: 50px;
   backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), var(--glow-soft);
-  max-width: 100%;
-  scrollbar-width: none; /* hide scrollbar (Firefox) */
-}
-.hero-buttons::-webkit-scrollbar {
-  display: none; /* hide scrollbar (Chrome, Safari) */
+  max-width: 90%;           /* give more room for buttons */
+  margin: 0 auto;           /* keep centered */
 }
 
-/* Neon buttons */
+/* Neon Buttons */
 .btn {
-  flex: 1 1 auto; /* keeps buttons flexible in row */
-  padding: 0.8rem 1.6rem;
-  border-radius: 30px;
+  flex: 0 0 auto;           /* prevents shrinking */
+  min-width: 160px;         /* set minimum width so text fits */
+  padding: 1rem 2rem;       /* make buttons taller & wider */
+  border-radius: 35px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.05rem;       /* slightly larger font */
   text-decoration: none;
   color: white;
   border: 2px solid transparent;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
   box-shadow: var(--glow-soft);
   transition: var(--transition);
-  white-space: nowrap; /* keeps text in one line */
+  white-space: nowrap;      /* ensures text never breaks */
   text-align: center;
 }
 
