@@ -78,45 +78,37 @@
   color: #cbd5e1;
 }
 
-/* Hero Buttons Container */
-.hero-buttons {
-  display: flex;
-  gap: 1.2rem;              /* slightly more spacing */
+/* Scroll Down Button */
+.scroll-down {
+  margin-top: 2.5rem;
+  display: inline-flex;
   justify-content: center;
-  flex-wrap: wrap;          /* allow wrapping instead of forcing one row */
-  padding: 1rem 1.5rem;     /* more padding inside container */
-  border-radius: 50px;
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), var(--glow-soft);
-  max-width: 90%;           /* give more room for buttons */
-  margin: 0 auto;           /* keep centered */
-}
-
-/* Neon Buttons */
-.btn {
-  flex: 0 0 auto;           /* prevents shrinking */
-  min-width: 160px;         /* set minimum width so text fits */
-  padding: 1rem 2rem;       /* make buttons taller & wider */
-  border-radius: 35px;
-  font-weight: 600;
-  font-size: 1.05rem;       /* slightly larger font */
-  text-decoration: none;
-  color: white;
-  border: 2px solid transparent;
+  align-items: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
   background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  text-decoration: none;
   box-shadow: var(--glow-soft);
   transition: var(--transition);
-  white-space: nowrap;      /* ensures text never breaks */
-  text-align: center;
+  animation: bounce 2s infinite;
 }
 
-.btn:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: var(--glow-strong);
+.scroll-down:hover {
+  transform: scale(1.1);
   background: linear-gradient(135deg, var(--secondary), var(--accent));
+  box-shadow: var(--glow-strong);
 }
 
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(8px); }
+  60% { transform: translateY(4px); }
+}
 
 /* BACK TO TOP */
 #backToTop {
