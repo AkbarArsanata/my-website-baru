@@ -17,24 +17,3 @@
         </button>
     </div>
 </nav>
-<script>
-    // filepath: c:\Users\User\Downloads\website_baru\html\header.html
-    document.addEventListener('DOMContentLoaded', function () {
-        const hamburger = document.getElementById('glass-hamburger');
-        const navLinks = document.getElementById('glass-nav-links');
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Tutup menu saat klik link (mobile)
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                }
-            });
-        });
-    });
-</script>
