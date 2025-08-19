@@ -16,35 +16,36 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  position: relative;
-  overflow: hidden;
   padding: 2rem;
   background: radial-gradient(circle at top, var(--bg2), var(--bg1));
   color: var(--text);
+  overflow: hidden;
+  position: relative;
 }
 
-/* Animated floating orbs */
+/* Floating gradient aura */
 .hero::before, .hero::after {
   content: "";
   position: absolute;
   border-radius: 50%;
   background: radial-gradient(circle, var(--primary), transparent);
   opacity: 0.25;
-  animation: floatOrb 10s infinite ease-in-out alternate;
+  animation: floatOrb 8s infinite ease-in-out alternate;
 }
 .hero::before {
-  width: 300px; height: 300px;
+  width: 250px; height: 250px;
   top: -80px; left: -80px;
 }
 .hero::after {
-  width: 400px; height: 400px;
+  width: 350px; height: 350px;
   bottom: -100px; right: -100px;
   background: radial-gradient(circle, var(--accent), transparent);
-  animation-delay: 5s;
+  animation-delay: 4s;
 }
+
 @keyframes floatOrb {
-  from { transform: translateY(0) rotate(0deg); }
-  to { transform: translateY(-40px) rotate(20deg); }
+  from { transform: translateY(0) scale(1); }
+  to { transform: translateY(-40px) scale(1.1); }
 }
 
 /* CONTENT */
@@ -70,19 +71,19 @@
 .hero-subtitle {
   font-size: clamp(1rem, 2.2vw, 1.2rem);
   opacity: 0.9;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.2rem;
   line-height: 1.6;
   max-width: 650px;
   margin-inline: auto;
   animation: fadeUp 1.6s ease forwards;
 }
 
-/* BUTTONS */
+/* BUTTONS (unchanged layout, just styling upgrade) */
 .hero-buttons {
   display: flex;
   gap: 1rem;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .btn {
