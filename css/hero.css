@@ -1,82 +1,51 @@
-/* ========== HERO SECTION ========== */
+:root {
+    --primary: #00f5a0;
+    --secondary: #00d9f5;
+    --text: #e0e0e0;
+    --glow: 0 0 12px rgba(0, 245, 160, 0.6);
+    --fast-transition: all 0.3s ease-in-out;
+}
+
 .hero {
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
     text-align: center;
+    position: relative;
     overflow: hidden;
-    background: radial-gradient(circle at center, var(--bg) 0%, #0a0a0a 100%);
+    background: radial-gradient(circle at top, #0a0f1e, #050709);
+    color: var(--text);
     padding: 2rem;
 }
 
 /* Greeting */
 .greeting {
-    font-size: clamp(1rem, 2vw, 1.3rem);
-    color: var(--text);
-    opacity: 0.8;
-    margin-bottom: 0.5rem;
-}
-
-/* Main Title with glitch effect */
-.hero-title {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    font-weight: 800;
-    text-transform: uppercase;
-    color: var(--primary);
-    text-shadow: 0 0 15px rgba(0, 255, 200, 0.6);
-    position: relative;
+    font-size: 1.3rem;
     margin-bottom: 1rem;
+    opacity: 0.85;
 }
 
-/* Glitch animation */
-.hero-title::before,
-.hero-title::after {
-    content: attr(data-text);
-    position: absolute;
-    left: 0;
-    right: 0;
-    color: var(--secondary);
-    overflow: hidden;
-    clip: rect(0, 900px, 0, 0);
-}
-
-.hero-title::before {
-    animation: glitchTop 2s infinite linear alternate-reverse;
-}
-
-.hero-title::after {
-    animation: glitchBottom 1.5s infinite linear alternate-reverse;
-}
-
-@keyframes glitchTop {
-    0% { clip: rect(0, 9999px, 0, 0); }
-    25% { clip: rect(5px, 9999px, 30px, 0); transform: translate(-2px, -2px); }
-    50% { clip: rect(10px, 9999px, 50px, 0); transform: translate(2px, 2px); }
-    75% { clip: rect(3px, 9999px, 40px, 0); transform: translate(-2px, 1px); }
-    100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
-}
-
-@keyframes glitchBottom {
-    0% { clip: rect(0, 9999px, 0, 0); }
-    25% { clip: rect(20px, 9999px, 60px, 0); transform: translate(2px, 0); }
-    50% { clip: rect(30px, 9999px, 80px, 0); transform: translate(-2px, -1px); }
-    75% { clip: rect(10px, 9999px, 40px, 0); transform: translate(1px, 2px); }
-    100% { clip: rect(0, 9999px, 0, 0); transform: translate(0); }
+/* Glitch title */
+.hero-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: var(--primary);
+    text-shadow: 0 0 5px var(--secondary), 0 0 20px var(--primary);
 }
 
 /* Subtitle */
 .hero-subtitle {
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 2.2vw, 1.3rem);
     color: var(--text);
     opacity: 0.85;
     margin-bottom: 1.8rem;
-    line-height: 1.6;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
+    line-height: 1.5;
 }
 
 /* Buttons */
@@ -87,54 +56,101 @@
     flex-wrap: wrap;
 }
 
+/* Gradient glowing button */
 .btn {
-    padding: 0.8rem 1.6rem;
-    border-radius: 30px;
-    background: var(--primary);
-    color: white;
-    text-decoration: none;
+    position: relative;
+    padding: 0.9rem 1.8rem;
+    border-radius: 40px;
     font-weight: 600;
-    box-shadow: var(--glow);
-    transition: var(--fast-transition);
+    font-size: 1rem;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 0 12px rgba(0, 255, 200, 0.6);
+    transition: all 0.35s ease;
+    overflow: hidden;
+    z-index: 1;
 }
 
+/* Hover effects */
 .btn:hover {
-    background: var(--secondary);
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px var(--secondary);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 200, 0.9);
 }
 
+/* Glowing ripple effect */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
+    transform: rotate(25deg);
+    animation: shimmer 4s infinite linear;
+    z-index: -1;
+}
+
+@keyframes shimmer {
+    0% { transform: rotate(25deg) translateX(-30%); }
+    100% { transform: rotate(25deg) translateX(30%); }
+}
+
+/* Outline button */
 .btn-outline {
     background: transparent;
     border: 2px solid var(--primary);
     color: var(--primary);
+    transition: all 0.3s ease;
 }
 
 .btn-outline:hover {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
+    box-shadow: 0 0 15px rgba(0, 255, 200, 0.6);
 }
 
 /* Floating icons */
-.floating-icon, .floating-icon-tech {
-    position: absolute;
-    font-size: 1.5rem;
-    opacity: 0.4;
-    animation: float 6s ease-in-out infinite;
-    color: var(--text);
-}
-
-.floating-icon {
-    top: 10%;
-    left: 20%;
-}
-
+.floating-icon,
 .floating-icon-tech {
-    bottom: 10%;
-    right: 20%;
+    position: absolute;
+    font-size: 2rem;
+    opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
 }
+
+.floating-icon { top: 15%; left: 10%; }
+.floating-icon:nth-child(2) { top: 30%; right: 12%; }
+.floating-icon:nth-child(3) { bottom: 20%; left: 18%; }
+
+.floating-icon-tech:nth-child(4) { top: 50%; right: 25%; }
+.floating-icon-tech:nth-child(5) { bottom: 30%; right: 15%; }
+.floating-icon-tech:nth-child(6) { top: 40%; left: 20%; }
+.floating-icon-tech:nth-child(7) { bottom: 15%; left: 30%; }
+.floating-icon-tech:nth-child(8) { top: 20%; right: 30%; }
 
 @keyframes float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-15px); }
+}
+
+/* Back to top */
+#backToTop {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 0.7rem;
+    cursor: pointer;
+    box-shadow: var(--glow);
+    transition: var(--fast-transition);
+}
+
+#backToTop:hover {
+    background: var(--secondary);
+    transform: scale(1.1);
 }
