@@ -2,8 +2,8 @@
     --primary: #00f5a0;
     --secondary: #00d9f5;
     --text: #e0e0e0;
-    --glow: 0 0 12px rgba(0, 245, 160, 0.6);
-    --fast-transition: all 0.3s ease-in-out;
+    --glow: 0 0 12px rgba(0, 245, 160, 0.4);
+    --fast-transition: all 0.25s ease-in-out;
 }
 
 .hero {
@@ -20,94 +20,52 @@
     padding: 2rem;
 }
 
-/* Greeting */
 .greeting {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     opacity: 0.85;
 }
 
-/* Glitch title */
 .hero-title {
     font-size: clamp(2.5rem, 5vw, 4rem);
     font-weight: bold;
     text-transform: uppercase;
-    position: relative;
-    display: inline-block;
     margin-bottom: 1rem;
     color: var(--primary);
     text-shadow: 0 0 5px var(--secondary), 0 0 20px var(--primary);
 }
 
-/* Subtitle */
 .hero-subtitle {
     font-size: clamp(1rem, 2.2vw, 1.3rem);
-    color: var(--text);
     opacity: 0.85;
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
     line-height: 1.5;
 }
 
-/* Buttons */
+/* Buttons row */
 .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-/* Gradient glowing button */
+/* Simple button style */
 .btn {
-    position: relative;
-    padding: 0.9rem 1.8rem;
-    border-radius: 40px;
+    padding: 0.7rem 1.4rem;
+    border-radius: 30px;
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     text-decoration: none;
     color: white;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
-    box-shadow: 0 0 12px rgba(0, 255, 200, 0.6);
-    transition: all 0.35s ease;
-    overflow: hidden;
-    z-index: 1;
+    transition: var(--fast-transition);
+    box-shadow: var(--glow);
 }
 
-/* Hover effects */
+/* Hover */
 .btn:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 0 20px rgba(0, 255, 200, 0.9);
-}
-
-/* Glowing ripple effect */
-.btn::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
-    transform: rotate(25deg);
-    animation: shimmer 4s infinite linear;
-    z-index: -1;
-}
-
-@keyframes shimmer {
-    0% { transform: rotate(25deg) translateX(-30%); }
-    100% { transform: rotate(25deg) translateX(30%); }
-}
-
-/* Outline button */
-.btn-outline {
-    background: transparent;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    transition: all 0.3s ease;
-}
-
-.btn-outline:hover {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
+    transform: translateY(-3px);
     box-shadow: 0 0 15px rgba(0, 255, 200, 0.6);
 }
 
@@ -116,7 +74,7 @@
 .floating-icon-tech {
     position: absolute;
     font-size: 2rem;
-    opacity: 0.15;
+    opacity: 0.12;
     animation: float 6s ease-in-out infinite;
 }
 
