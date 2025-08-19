@@ -83,11 +83,13 @@
   display: flex;
   gap: 1rem;
   justify-content: center;
-  padding: 0.8rem 1rem;
-  border-radius: 40px;
-  backdrop-filter: blur(10px);
+  flex-wrap: wrap; /* allows wrapping on smaller screens */
+  padding: 0.5rem 0; /* reduce padding so buttons don’t crop */
+  border-radius: 50px;
+  backdrop-filter: blur(12px);
   background: rgba(255, 255, 255, 0.05);
   box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), var(--glow-soft);
+  max-width: 100%; /* prevent overflow */
 }
 
 /* Neon buttons */
