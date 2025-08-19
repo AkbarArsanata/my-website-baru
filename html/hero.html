@@ -1,34 +1,66 @@
-<section class="hero">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hero Section</title>
+  <link rel="stylesheet" href="hero.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+  
+  <section class="hero">
     <div class="hero-content">
-        <p class="greeting active">👋 Hi, I'm Akbar</p>
-        <h1 class="hero-title" data-text="Data • AI • Statistics">
-            Data • AI • Statistics
-        </h1>
-        <p class="hero-subtitle">
-            Turning data into insights, building intelligent solutions with Machine Learning & AI.
-        </p>
+      <p class="greeting animate-fade">👋 Hi, I'm Akbar</p>
 
-        <!-- Simple row buttons -->
-        <div class="hero-buttons">
-            <a href="#projects" class="btn">🚀 Work</a>
-            <a href="#certificates" class="btn">📜 Certificates</a>
-            <a href="#about" class="btn">👤 Profile</a>
-            <a href="#experience-section" class="btn">💼 Experience</a>
-            <a href="#contact" class="btn">💬 Contact</a>
-        </div>
+      <h1 class="hero-title animate-slide">
+        Data • AI • Statistics
+      </h1>
+
+      <p class="hero-subtitle animate-fade">
+        Turning data into insights & building intelligent solutions with Machine Learning & AI.
+      </p>
+
+      <!-- Buttons -->
+      <div class="hero-buttons animate-fade">
+        <a href="#projects" class="btn">🚀 Work</a>
+        <a href="#certificates" class="btn">📜 Certificates</a>
+        <a href="#about" class="btn">👤 Profile</a>
+        <a href="#experience-section" class="btn">💼 Experience</a>
+        <a href="#contact" class="btn">💬 Contact</a>
+      </div>
     </div>
 
-    <!-- Floating icons -->
-    <i class="fas fa-brain floating-icon"></i>
-    <i class="fas fa-robot floating-icon"></i>
-    <i class="fas fa-chart-bar floating-icon"></i>
+    <!-- Floating background icons -->
+    <div class="hero-icons">
+      <i class="fas fa-brain"></i>
+      <i class="fas fa-robot"></i>
+      <i class="fas fa-chart-bar"></i>
+      <i class="fab fa-python"></i>
+      <i class="fas fa-database"></i>
+      <i class="fas fa-chart-line"></i>
+      <i class="fas fa-server"></i>
+      <i class="fas fa-network-wired"></i>
+    </div>
+  </section>
 
-    <i class="fab fa-python floating-icon-tech"></i>
-    <i class="fas fa-database floating-icon-tech"></i>
-    <i class="fas fa-chart-line floating-icon-tech"></i>
-    <i class="fas fa-server floating-icon-tech"></i>
-    <i class="fas fa-network-wired floating-icon-tech"></i>
-</section>
+  <!-- Back to top button -->
+  <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
-<div class="cursor"></div>
-<button id="backToTop"><i class="fas fa-arrow-up"></i></button>
+  <script>
+    // Show/hide back-to-top button
+    const backToTop = document.getElementById("backToTop");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = "block";
+      } else {
+        backToTop.style.display = "none";
+      }
+    });
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+</body>
+</html>
