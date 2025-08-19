@@ -5,25 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hero Section</title>
   <link rel="stylesheet" href="hero.css">
-  <!-- Font Awesome for icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
   
   <section class="hero">
     <div class="hero-content">
-      <p class="greeting animate-fade">👋 Hi, I'm Akbar</p>
+      <p class="greeting">👋 Hi, I'm Akbar</p>
 
-      <h1 class="hero-title animate-slide">
-        Data • AI • Statistics
-      </h1>
+      <h1 class="hero-title">Data • AI • Statistics</h1>
 
-      <p class="hero-subtitle animate-fade">
+      <p class="hero-subtitle">
         Turning data into insights & building intelligent solutions with Machine Learning & AI.
       </p>
 
-      <!-- Buttons -->
-      <div class="hero-buttons animate-fade">
+      <!-- Horizontal Buttons -->
+      <div class="hero-buttons">
         <a href="#projects" class="btn">🚀 Work</a>
         <a href="#certificates" class="btn">📜 Certificates</a>
         <a href="#about" class="btn">👤 Profile</a>
@@ -31,32 +29,15 @@
         <a href="#contact" class="btn">💬 Contact</a>
       </div>
     </div>
-
-    <!-- Floating background icons -->
-    <div class="hero-icons">
-      <i class="fas fa-brain"></i>
-      <i class="fas fa-robot"></i>
-      <i class="fas fa-chart-bar"></i>
-      <i class="fab fa-python"></i>
-      <i class="fas fa-database"></i>
-      <i class="fas fa-chart-line"></i>
-      <i class="fas fa-server"></i>
-      <i class="fas fa-network-wired"></i>
-    </div>
   </section>
 
-  <!-- Back to top button -->
+  <!-- Back to top -->
   <button id="backToTop"><i class="fas fa-arrow-up"></i></button>
 
   <script>
-    // Show/hide back-to-top button
     const backToTop = document.getElementById("backToTop");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.style.display = "block";
-      } else {
-        backToTop.style.display = "none";
-      }
+      backToTop.style.display = window.scrollY > 300 ? "block" : "none";
     });
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
