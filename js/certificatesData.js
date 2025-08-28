@@ -445,9 +445,8 @@ export const certificatesData = {
             "duration": "3 weeks"
         }
     ],
-    "devops": [],
-    "software-development": [
-         {
+    "devops": [
+        {
             "pdfUrl": "certificates/Machine Learning Operations(MLOPS).pdf",
             "badge": "Dicoding",
             "name": "Machine Learning Opeartions(MLOPS)",
@@ -460,7 +459,9 @@ export const certificatesData = {
             "name": "Building Machine Learning Systems",
             "desc": "This certificate acknowledges completion of a course designed to train learners in building machine learning systems effectively. The curriculum provided hands-on practice in data preparation, pipeline development for automatic retraining, and applying structured approaches in ML system development with MLOps principles. Practical implementation was achieved using MLflow, GitHub, and Docker. The course emphasized producing reliable, scalable, and maintainable ML systems, ensuring learners gained practical industry-ready skills.",
             "duration": "80 hours"
-        },
+        }
+    ],
+    "software-development": [
         {
             "pdfUrl": "certificates/Belajar Dasar Git dengan GitHub.pdf",
             "badge": "Dicoding",
