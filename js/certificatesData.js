@@ -447,6 +447,20 @@ export const certificatesData = {
     ],
     "devops": [],
     "software-development": [
+         {
+            "pdfUrl": "certificates/Machine Learning Operations(MLOPS).pdf",
+            "badge": "Dicoding",
+            "name": "Machine Learning Opeartions(MLOPS)",
+            "desc": "This certificate verifies the successful completion of a specialized training program on Machine Learning Operations (MLOps). The course focused on mastering the lifecycle of machine learning projects by implementing automation, scalability, and reliability through modern tools. Key skills developed include building and managing metadata with open-source tools, designing robust and retrainable machine learning models, implementing model serving for production use, setting up monitoring and alerting systems to track model performance, and utilizing MLflow, GitHub, and Docker to create structured and automated ML pipelines. The program required completing a final project involving an end-to-end MLOps pipeline, with a total estimated learning time of 90 hours.",
+            "duration": "90 hours"
+        },
+        {
+            "pdfUrl": "certificates/Membangun Sistem Machine Learning.pdf",
+            "badge": "Dicoding",
+            "name": "Building Machine Learning Systems",
+            "desc": "This certificate acknowledges completion of a course designed to train learners in building machine learning systems effectively. The curriculum provided hands-on practice in data preparation, pipeline development for automatic retraining, and applying structured approaches in ML system development with MLOps principles. Practical implementation was achieved using MLflow, GitHub, and Docker. The course emphasized producing reliable, scalable, and maintainable ML systems, ensuring learners gained practical industry-ready skills.",
+            "duration": "80 hours"
+        },
         {
             "pdfUrl": "certificates/Belajar Dasar Git dengan GitHub.pdf",
             "badge": "Dicoding",
