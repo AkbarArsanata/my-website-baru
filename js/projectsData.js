@@ -6,7 +6,7 @@ export const projects = [
         image: "images/Project/Univariategpt.png",
         demo: "https://univariateanalysis.netlify.app/",
         tags: ["Machine Learning", "Python", "Statistics", "Devops", "Frontend", "Backend", "AWS"],
-        category: ["end-to-end", "mlops"],
+        category: "end-to-end",
         featured: true,
         language: "English",
         teamSize: "1 person"
@@ -18,7 +18,7 @@ export const projects = [
         image: "images/Project/tomatech.png",
         demo: "https://toma-tech.vercel.app/",
         tags: ["Python", "Machine Learning", "Frontend", "Backend", "Large Language Model", "Image Processing", "Google Cloud"],
-        category: ["end-to-end", "mlops"],
+        category: "end-to-end",
         featured: true,
         language: "Indonesia",
         teamSize: "6 person"
