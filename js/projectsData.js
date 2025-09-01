@@ -6,7 +6,7 @@ export const projects = [
         image: "images/Project/Univariategpt.png",
         demo: "https://univariateanalysis.netlify.app/",
         tags: ["Machine Learning", "Python", "Statistics", "Devops", "Frontend", "Backend", "AWS"],
-        category: "end-to-end",
+        category: ["end-to-end", "mlops"],
         featured: true,
         language: "English",
         teamSize: "1 person"
@@ -18,7 +18,7 @@ export const projects = [
         image: "images/Project/tomatech.png",
         demo: "https://toma-tech.vercel.app/",
         tags: ["Python", "Machine Learning", "Frontend", "Backend", "Large Language Model", "Image Processing", "Google Cloud"],
-        category: "end-to-end",
+        category: ["end-to-end", "mlops"],
         featured: true,
         language: "Indonesia",
         teamSize: "6 person"
@@ -30,7 +30,7 @@ export const projects = [
         image: "images/Project/ETL.png",
         demo: "https://etl-ibrahimakbararsanataa.netlify.app/",
         tags: ["Beautifulsoup", "PorstegSQL", "Spreadhseet", "Python", "Google BigQuery", "SQLAlchemy"],
-        category: "ui-showcase",
+        category: "data-engineering",
         featured: false,
         language: "English",
         teamSize: "1 person"
@@ -78,7 +78,7 @@ export const projects = [
         image: "images/Project/Pollution.png",
         demo: "https://drive.google.com/drive/folders/1pJrE2C6P76YgdkcRY8ergKfm5YQHlapI?usp=drive_link",
         tags: ["Streamlit", "Python", "Machine Learning", "Statistics", "Data Visualization"],
-        category: "ui-showcase",
+        category: "data-viz",
         featured: false,
         language: "Indonesia",
         teamSize: "1 person"
@@ -138,7 +138,7 @@ export const projects = [
         image: "images/Project/Data Science Competition.png",
         demo: "https://osmanual.my.canva.site/data-science-competition-a",
         tags: ["Machine Learning", "Python", "Data Science", "Clustering", "Classification", "Prediction"],
-        category: "ui-showcase",
+        category: "data-ai-labs",
         featured: false,
         language: "English",
         teamSize: "1 person"
