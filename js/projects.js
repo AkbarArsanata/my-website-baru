@@ -119,10 +119,11 @@ function showLoadingAnimation(show) {
 
 // Tech icons mapping
 const categoryLabels = {
-  "end-to-end": "End-to-End Solutions",
-  "data-ai-labs": "Data & AI Labs",
-  "ui-showcase": "UI Showcase",
-  "mobile-hybrid": "Mobile & Hybrid Apps"
+  "end-to-end": "End-to-End Applications",
+  "data-ai-labs": "AI & Machine Learning Projects",
+  "data-engineering": "Data Engineering & Pipelines",
+  "data-viz": "Data Visualization & Dashboards",
+  "mlops": "MlOps"
 };
 
 // Core functions
