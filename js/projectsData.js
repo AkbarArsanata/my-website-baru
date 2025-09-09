@@ -166,6 +166,42 @@ export const projects = [
         featured: false,
         language: "Indonesia",
         teamSize: "1 person"
+    },
+        {
+        id: 15,
+        title: "Machine Learning Pipeline Development",
+        description: "Developed a machine learning pipeline using TensorFlow Extended (TFX), covering data ingestion, validation, model training, and evaluation. The project focuses on scalable and reproducible workflows for experimentation and deployment.",
+        image: "images/Project/ML_Pipeline.png",
+        demo: "https://drive.google.com/drive/folders/12xFy6iR7t-2OB01Zkomk473GwpkV_egy?usp=sharing",
+        tags: ["TensorFlow Extended", "Python", "Pipeline", "Machine Learning"],
+        category: "mlops",
+        featured: false,
+        language: "Indonesia",
+        teamSize: "1 person"
+    },
+    {
+        id: 16,
+        title: "Machine Learning System Design",
+        description: "Designed and implemented a production-ready ML system with MLOps tools (Git, DVC, MLflow, Docker, Kubernetes). Included data management, experiment tracking, API deployment, and monitoring with Prometheus and Grafana.",
+        image: "images/Project/ML_System_Design.png",
+        demo: "https://drive.google.com/drive/folders/1doL-bkA8XRllhmZs4Sq7uDvJI4aV_pJe?usp=sharing",
+        tags: ["MLOps", "Docker", "Kubernetes", "Prometheus", "Grafana", "MLflow"],
+        category: "mlops",
+        featured: false,
+        language: "Indonesia",
+        teamSize: "1 person"
+    },
+    {
+        id: 17,
+        title: "Machine Learning System Development and Operations",
+        description: "Built an end-to-end ML system with MLOps practices on cloud infrastructure. Covered pipeline orchestration, model deployment, and monitoring to ensure performance and reliability in production environments.",
+        image: "images/Project/ML_DevOps.png",
+        demo: "https://drive.google.com/drive/folders/160oJMgdVvARx5bfC957YdFifyvWQkuNZ",
+        tags: ["Machine Learning", "Cloud", "MLOps", "Model Monitoring"],
+        category: "mlops",
+        featured: false,
+        language: "Indonesia",
+        teamSize: "1 person"
     }
 ];
 
