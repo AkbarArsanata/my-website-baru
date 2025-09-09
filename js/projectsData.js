@@ -143,6 +143,30 @@ export const projects = [
         language: "English",
         teamSize: "1 person"
     },
+    {
+        id: 13,
+        title: "AI-Powered Smart Calendar",
+        description: "An AI-driven smart calendar integrated with Google Calendar to streamline scheduling at BPS. Capable of processing over 10,000+ documents (OCR, vector embeddings, RAG), IntelliCal features a contextual chatbot for semantic search and automated event recommendations.",
+        image: "images/Project/SMART CALENDAR.png", // taruh gambar di folder images/Project
+        demo: "https://drive.google.com/file/d/1tbG0MTbWT6DQypwIag0D_1TO6DWmhm7k/view?usp=sharing", // isi sesuai demo link
+        tags: ["AI", "Large Language Model", "RAG", "Google Calendar", "Vector Embeddings", "Chatbot"],
+        category: "end-to-end",
+        featured: true,
+        language: "Indonesia",
+        teamSize: "1 person"
+    },
+    {
+        id: 14,
+        title: "PUSAKA (Centralized Agricultural Analytics System)",
+        description: "A web-based analytics platform for agricultural credit scoring using satellite imagery (NDVI, LST, NTL), machine learning, and Vertex AI + Gemini LLM. PUSAKA automates loan eligibility analysis, integrates agricultural risk factors, and provides adaptive recommendations to support financial inclusion for farmers.",
+        image: "images/Project/PUSAKA.png", // taruh gambar di folder images/Project
+        demo: "https://drive.google.com/drive/folders/1OEoPGgewhK-VCXd0Ii9-z18GbTRCK5Mk?usp=sharing", // isi sesuai demo link
+        tags: ["AI", "Agriculture", "Machine Learning", "Google Cloud", "Vertex AI", "LLM", "Satellite Analytics"],
+        category: "data-ai-labs",
+        featured: false,
+        language: "Indonesia",
+        teamSize: "1 person"
+    }
 ];
 
 export const techIcons = {
